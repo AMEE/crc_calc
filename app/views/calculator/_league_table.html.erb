@@ -1,0 +1,16 @@
+<h2>Ranked <%= @rank %> out of <%= @size %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comparison</th>
+      <th>kgCO<sub>2</sub> / yr</th>
+    </tr>    
+  </thead>
+  <tbody>
+    <tr><td>Best</td><td class="number"><%= fmt_no @best.co2 %></td></tr>
+    <tr><td>You</td><td class="number"><%= fmt_no @entry.co2 %></td></tr>
+    <tr><td>Worst</td><td class="number"><%= fmt_no @worst.co2 %></td></tr>
+  </tbody>
+</table>
+

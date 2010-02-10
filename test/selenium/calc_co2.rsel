@@ -1,0 +1,21 @@
+# It's often a good idea to start the test with 'setup'.
+# See /selenium/setup for more info.
+
+open "/selenium/setup?fixtures=blank%2Ffuel_entries,blank%2Fclient_details"
+open "/?guid=seltest"
+
+# type doesn't result in any events being fired and sadly, type_keys doesn't
+# have any observable effect in Safari
+type "id=electricity", "555"
+
+# Being as explicit as possible for firing all events that are listened for
+# Note that in Safari at least, key_down, key_press and key_up have no effect
+fire_event "id=electricity", "keyup"
+fire_event "id=electricity", "keydown"
+fire_event "id=electricity", "keypress"
+
+wait_for_text "id=electricity-co2", "regexp:[0-9,]+"
+
+# Point the browser to http://localhost:3000/selenium/tests/calc_co2.rsel to see
+# how this test is rendered, or to http://localhost:3000/selenium to
+# run the suite.

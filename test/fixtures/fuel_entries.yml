@@ -1,0 +1,34 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+hemp_hugger_electricity:
+  profile_id: "hemp_hugger"
+  drill: fuel=electricity
+  co2: 1
+  cost: 1
+  value: 1
+
+hemp_hugger_nat_gas:
+  profile_id: "hemp_hugger"  
+  drill: fuel=natural+gas
+  co2: 2
+  cost: 2
+
+polluticon_electricity:
+  profile_id: "polluticon"
+  drill: fuel=electricity
+  co2: 5
+  cost: 1
+  value: 1
+
+polluticon_nat_gas:
+  profile_id: "polluticon"
+  drill: fuel=natural+gas
+  co2: 10
+  cost: 2
+
+polluticon_coke_gas:
+  profile_id: "polluticon"
+  drill: fuel=coke+oven+gas
+  co2: 15
+  cost: 3
+  

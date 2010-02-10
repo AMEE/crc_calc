@@ -1,0 +1,171 @@
+body, input {
+  font-family: Helvetica, Arial, sans;
+  color: #333;
+}
+
+body {
+  margin: 0 auto;
+  width: 650px;
+}
+
+#crc-container {
+  padding-bottom: 25px;
+}
+
+#clear-session {
+  cursor: pointer;
+  float: right;
+  font-size: 80%;
+}
+
+#toggle-hidden {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #369;
+  font-size: 80%;    
+}
+
+#footer {
+  margin-top: 20px;
+}
+
+#report {
+  color: black;
+  background: white;
+  border: none;
+  font-weight: bold;
+  padding: 15px 0 15px 15px;
+  float: right;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#powered-by-amee, #powered-by-amee-report {
+  width: 101px;
+  height: 47px;
+  background: white url('../images/powered_by_amee.png') left center no-repeat;
+}
+
+#powered-by-amee-report {
+  float: right;
+  margin-top: 15px;
+}
+
+.dimmed {
+  color: #888;
+}
+
+.calculating, .generating {
+	background: white url('../images/indicator.gif') right center no-repeat;
+}
+
+.number {
+  text-align: right;
+}
+
+.hidden-by-default {
+  display: none;
+}
+
+.feedback {
+  color: #553;
+  background: #f5f5a5;  
+  border: 1px #f8fb0e solid;
+  padding: 5px 5px;
+  text-align: left;
+  line-height: 1.25em;
+}
+
+#hhmr-wrapper {
+  margin: 10px 0;
+}
+
+.calc-error {
+	color: #801B3B;
+	background: #FFCFCF;
+}
+
+#crc-status {
+  margin: 10px 0;
+}
+
+input {
+  border: 1px #ccc solid;
+  font-size: 100%;
+}
+
+table {
+  color: #555;
+  background: #fff;
+  border-collapse: collapse;
+  border: 2px #000 solid;
+}
+
+td, th {
+  border: 1px #ccc dotted;
+  padding: .5em;
+}
+
+thead th, tfoot th {
+  color: #333;
+  background: transparent;
+  border: 2px #000 solid;
+  text-align: left;
+  font-weight: bold;
+}
+
+tfoot td {
+  border: 2px #000 solid;
+}
+
+.tab {
+  cursor: pointer;
+}
+
+.client-league-pos {
+  background: #d7d7f7;
+}
+
+#league {
+  display: none;
+}
+
+#calculator {
+}
+
+#tabs ul {
+  padding: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+#tabs li {
+  list-style: none;
+  display: inline;
+  padding: 4px;
+  
+  cursor: pointer;
+  background: #aaa;
+  color: #eee;  
+  border: 1px #bbb solid;  
+}
+
+#tabs li.selected {
+  background: #555;
+  border: 1px solid #000;
+}
+
+.divider {
+  margin: 10px 0 10px 0;
+  background: #e5e5e5;
+  background: #ccc;
+  height: 1px;
+  overflow: hidden;
+}
+
+.float-right {
+  float: right;
+}
+
+.textfield-placeholder {
+  color: #777777;
+}

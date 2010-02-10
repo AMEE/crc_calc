@@ -1,0 +1,35 @@
+AMEE CRC Calculator
+===================
+
+This is an example Rails application that uses AMEE to calculates emissions and
+construct a report based on the UK Government's Consultation on the Draft Order
+to Implement the Carbon Reduction Commitment (see
+http://explorer.amee.com/categories/Carbon_Reduction_Commitment for more details).
+
+You can create your own copy of this application at http://my.amee.com/templates/11-crc,
+or you can use this codebase to run your own copy on your own servers. You may also
+use it as a base from which to develop your own AMEE applications.
+
+License
+-------
+
+MIT (see the COPYING file)
+
+Requirements
+------------
+
+Rails 2.3.4
+gems:
+  amee >= 2.0.28
+  prawn 0.6.3
+  prawn-layout 0.3.2
+
+Setup
+-----
+
+Download the app, and customise config/amee.example.yml and config/database.example.yml
+with your own settings. Then run:
+
+  rake db:schema:load
+
+to set up the database. Your app is then ready to use by running script/server.

@@ -1,0 +1,101 @@
+<%= stylesheet_link_tag "crc.css" %>
+<script src="/javascripts/crc.js" type="text/javascript"></script>  
+
+<div id="crc-container">
+  
+  <h2>Carbon Reduction Commitment Calculator</h2>
+  
+  <div>
+    <p>
+      This tool calculates emissions and constructs a report based on the UK Government's Consultation on the Draft Order to Implement the 
+      <a href="http://explorer.amee.com/categories/Carbon_Reduction_Commitment">Carbon Reduction Commitment</a>.
+    </p>
+    <p>
+      Under this scheme, organisations which use at least one half hourly electricity meter and consume at least 6,000 MWh of electricity per year are required to report on the CO<sub>2</sub> emissions associated with their total energy consumption. This includes electricity together with network gas and 24 other fuels, but excludes emissions associated with transport or onward supply.
+    </p>
+  </div>  
+  
+  <div id="tabs">
+    <ul>
+      <li id="calculator-tab" class="tab selected">Calculator</li>
+      <li id="league-tab" class="tab">Virtual CRC League Table</li>
+    </ul>
+  </div>
+    
+  <div id="calculator" class="tab-content">
+
+    <div id="crc-status" class="feedback">
+      <div id="crc-first_run" <%= crc_stat_vis @crc_status, :first_run %>
+        >Your CRC eligibility will be updated as you enter electricity usage</div>
+      <div id="crc-full_participant" <%= crc_stat_vis @crc_status, :full_participant %>
+        >You are a full CRC participant</div>
+      <div id="crc-exempt_hhm" <%= crc_stat_vis @crc_status, :exempt_hhm %>
+        >You're partially exempt from CRC as you haven't had a half hourly meter reading during the qualification period. Only information disclosure is required.</div>
+      <div id="crc-exempt_elec" <%= crc_stat_vis @crc_status, :exempt_elec %>
+        >You're partially exempt from CRC as your electricity usage is less than 6,000 MWh. Only information disclosure is required.</div>
+      <div id="crc-exempt_both" <%= crc_stat_vis @crc_status, :exempt_both %>
+        >You're exempt from CRC as you have neither had a half hourly meter reading, nor consumed at least 6,000 MWh of electricity during the qualification period.</div>
+      <div id="crc-unknown" <%= crc_stat_vis @crc_status, :unknown %>
+        >An error has occurred - your CRC eligibility is currently unknown</div>
+    </div>
+    
+    <div id="hhmr-wrapper">
+      <input id="hhmr" name="hhmr" type="checkbox" 
+        <%= @hhmr ? "checked='checked'" : "" %>
+        >At least one half hourly meter (HHM) reading was made during the 2008 calendar year
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Value</th>
+          <th>Unit</th>
+          <th>kgCO<sub>2</sub> / yr</th>
+          <th>£ / yr</th>
+        </tr>
+      </thead>
+    
+      <tfoot>
+        <tr>
+          <td colspan="3">Total</td>
+          <td class="number" id="total-co2"><%= fmt_no @cd[:total_co2] %></td>
+          <td class="number" id="total-cost"><%= fmt_no @cd[:total_cost] %></td>
+        </tr>
+      </tfoot>
+    
+      <tbody id="crc-data">
+        <% @fuel_entries.each do |entry| %>
+          <tr>
+            <td>
+              <%= entry.hr_name %>
+            </td>
+            <td>
+              <input id="<%= n_to_s entry.hr_name %>" type="text" 
+                data-drill="<%= entry.drill %>" value="<%= entry.value %>">
+            </td>
+            <td>
+              <span id="<%= n_to_s entry.hr_name %>-unit"><%= entry.unit %></span>
+            </td>            
+            <td class="number">
+              <span id="<%= n_to_s entry.hr_name %>-co2"><%= fmt_no entry.co2 %></span>
+            </td>
+            <td class="number">
+              <span id="<%= n_to_s entry.hr_name %>-cost"><%= fmt_no entry.cost %></span>
+            </td>
+          </tr>
+        <% end %>
+      
+      </tbody>
+    </table>  
+  
+    <div id="footer">
+      <a href="/calculator/web_report" id="report">Generate Report</a>
+      <div id="powered-by-amee"></div>
+    </div>
+  </div>
+  
+  <div id="league" class="tab-content">
+  </div>
+    
+</div>

@@ -1,0 +1,78 @@
+body {
+  font-family: Georgia, Times, serif;
+  color: #333;
+  margin: 0 auto;
+  width: 500px;  
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: Helvetica, Arial, sans-serif;  
+}
+
+table {
+  width: 500px;
+/*  font-family: "Courier New";*/
+}
+
+th {
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
+  vertical-align: top;
+}
+
+td, th {
+  border-bottom: 1px #ccc dotted;
+  padding-top: .5em;  
+}
+
+input, select {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  border: 1px #ccc solid;
+  font-size: 100%;
+}
+
+a {
+  color: #57e;
+}
+
+.number, .align-right {
+  text-align: right;
+}
+
+.textfield-placeholder {
+  color: #777777;
+}
+
+#powered-by-amee, #powered-by-amee-report {
+  width: 101px;
+  height: 47px;
+  background: white url('../images/powered_by_amee.png') left center no-repeat;
+}
+
+#powered-by-amee-report {
+  float: right;
+}
+
+.divider {
+  margin: 18px 0 18px 0;
+  background: #777;
+  height: 1px;
+  overflow: hidden;
+}
+
+#footer {
+  margin: 25px 0 25px 0;
+}
+
+#report {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 110%;
+}
+
+#report input {
+  cursor: pointer;
+  background: #555;
+  color: #eee;
+  border: 1px solid #000;
+}

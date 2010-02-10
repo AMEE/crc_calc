@@ -1,0 +1,31 @@
+== Vertical slice ==
+
+x Start server
+
+x Show electricity field on '/' with unit listed as kwH
+
+x Retrieve CO2 figure on button click
+
+x Construct URL and/or POST or PUT depending on whether the profile item has already been created
+
+x Create a profile id if none exists - store profile id in cookie and add link that effectively logs out
+
+== Improvements ==
+
+x Recalc 500ms after typing stopped or after focus change
+
+x Static ordering
+
+x Add full list of energy types / fuels 
+
+y Add support for different units
+
+Dynamic ordering
+
+Front end style
+
+? Add extra copy / placeholder for copy
+
+Adhere to Rails conventions
+
+Animation / visualisation

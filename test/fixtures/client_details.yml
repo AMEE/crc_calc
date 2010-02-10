@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+hemp_hugger:
+  guid: 1
+  profile_id: "hemp_hugger"
+
+newbie:
+  guid: 2
+  profile_id: "newbie"
+  
+polluticon:
+  guid: 3
+  profile_id: "polluticon"  
+    
