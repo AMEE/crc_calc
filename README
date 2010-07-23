@@ -15,21 +15,24 @@ License
 
 MIT (see the COPYING file)
 
-Requirements
-------------
-
-Rails 2.3.4
-gems:
-  amee >= 2.0.28
-  prawn 0.6.3
-  prawn-layout 0.3.2
-
 Setup
 -----
 
 Download the app, and customise config/amee.example.yml and config/database.example.yml
 with your own settings. Then run:
 
+  rake gems:install
   rake db:schema:load
 
 to set up the database. Your app is then ready to use by running script/server.
+
+Requirements
+------------
+
+Rails 2.3.4
+Rails-compatible database server (MySQL, PostgreSQL, SQLite, etc)
+gems:
+  amee >= 2.0.28
+  prawn 0.6.3
+  prawn-layout 0.3.2
+  hoptoad_notifier
