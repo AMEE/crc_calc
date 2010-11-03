@@ -8,15 +8,15 @@
 
   <div id="tabs">
     <ul>
-      <li id="about-tab" class="tab selected">About</li>
-      <li id="details-tab" class="tab">Your Details</li>
-      <li id="calculator-tab" class="tab">Calculator</li>
-      <li id="league-tab" class="tab">Virtual CRC League Table</li>
-      <li id="report-tab" class="tab">Report</li>
+      <li id="about-tab" class="tab<%= ' selected' if @section == :about%>">About</li>
+      <li id="details-tab" class="tab<%= ' selected' if @section == :details%>">Your Details</li>
+      <li id="calculator-tab" class="tab<%= ' selected' if @section == :calculator%>">Calculator</li>
+      <li id="league-tab" class="tab<%= ' selected' if @section == :leaguetable%>">Virtual CRC League Table</li>
+      <li id="report-tab" class="tab<%= ' selected' if @section == :report%>">Report</li>
     </ul>
   </div>
 
-  <div id="about" class="tab-content">
+  <div id="about" class="tab-content"<%= ' style="display:none"' unless @section == :about%>>
     <p>
       This tool calculates emissions and constructs a report based on the UK Government's Consultation on the Draft Order to Implement the
       <a href="http://explorer.amee.com/categories/Carbon_Reduction_Commitment">Carbon Reduction Commitment</a>.
@@ -26,11 +26,11 @@
     </p>
   </div>
 
-  <div id="details" class="tab-content" style="display:none">
+  <div id="details" class="tab-content"<%= ' style="display:none"' unless @section == :details%>>
     <%= render :partial => 'details' %>
   </div>
 
-  <div id="calculator" class="tab-content" style="display:none">
+  <div id="calculator" class="tab-content"<%= ' style="display:none"' unless @section == :calculator%>>
 
     <div id="crc-status" class="feedback">
       <div id="crc-first_run" <%= crc_stat_vis @crc_status, :first_run %>
@@ -99,10 +99,10 @@
   
   </div>
   
-  <div id="league" class="tab-content" style="display:none">
+  <div id="league" class="tab-content"<%= ' style="display:none"' unless @section == :leaguetable%>>
   </div>
     
-  <div id="report" class="tab-content" style="display:none">
+  <div id="report" class="tab-content"<%= ' style="display:none"' unless @section == :report%>>
   </div>
 
   <div id="footer">

@@ -14,7 +14,7 @@ class CalculatorController < ApplicationController
     @client_detail = ClientDetail.find_by_profile_id profile
     @crc_status = @cd[:crc_status]
     @hhmr = @cd[:hhm_reading]
-    
+    @section = params[:section].to_sym
     render
   end
   
@@ -36,6 +36,15 @@ class CalculatorController < ApplicationController
     render :json => data
   end
   
+  def edit_details
+    @client_detail = ClientDetail.find_by_profile_id profile
+    @client_detail.name = params[:name] unless params[:name] == 'Your Name'
+    @client_detail.email = params[:email] unless params[:email] == 'Your Email'
+    @client_detail.org_name = params[:org_name] unless params[:org_name] == 'Your Org Name'
+    @client_detail.save!
+    redirect_to :action => 'index', :section => 'calculator'
+  end
+
   def hhmr 
     hhmr = params[:hhmr]
     
