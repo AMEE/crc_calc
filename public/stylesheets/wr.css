@@ -1,76 +1,46 @@
-body {
-  font-family: Georgia, Times, serif;
-  color: #333;
-  margin: 0 auto;
-  width: 500px;  
-}
-
-h1,h2,h3,h4,h5,h6 {
-  font-family: Helvetica, Arial, sans-serif;  
-}
-
-table {
+#report table {
   width: 500px;
 /*  font-family: "Courier New";*/
 }
 
-th {
+#report th {
   text-align: left;
   font-family: Helvetica, Arial, sans-serif;
   vertical-align: top;
 }
 
-td, th {
+#report td, #report th {
   border-bottom: 1px #ccc dotted;
-  padding-top: .5em;  
+  padding-top: .5em;
 }
 
-input, select {
+#report input, #report select {
   font-family: Helvetica, Arial, sans-serif;
   color: #333;
   border: 1px #ccc solid;
   font-size: 100%;
 }
 
-a {
+#report a {
   color: #57e;
 }
 
-.number, .align-right {
+#report .number, #report .align-right {
   text-align: right;
 }
 
-.textfield-placeholder {
+#report .textfield-placeholder {
   color: #777777;
 }
 
-#powered-by-amee, #powered-by-amee-report {
-  width: 101px;
-  height: 47px;
-  background: white url('../images/powered_by_amee.png') left center no-repeat;
-}
-
-#powered-by-amee-report {
-  float: right;
-}
-
-.divider {
+#report .divider {
   margin: 18px 0 18px 0;
   background: #777;
   height: 1px;
   overflow: hidden;
 }
 
-#footer {
-  margin: 25px 0 25px 0;
-}
-
-#report {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 110%;
-}
-
-#report input {
+#pdfreport input {
   cursor: pointer;
   background: #555;
   color: #eee;

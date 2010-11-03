@@ -116,7 +116,7 @@ class CalculatorController < ApplicationController
     @rank, @entry = FuelEntry.rank_and_entry lt, profile
     @rank = "unranked" if @rank.nil?    
     
-    render
+    render :partial => 'web_report'
   end
   
   def pdf_report

@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "crc.css" %>
+<%= stylesheet_link_tag "crc.css", "wr.css" %>
 <script src="/javascripts/crc.js" type="text/javascript"></script>  
 
 <div id="crc-container">
@@ -10,6 +10,7 @@
       <li id="about-tab" class="tab selected">About</li>
       <li id="calculator-tab" class="tab">Calculator</li>
       <li id="league-tab" class="tab">Virtual CRC League Table</li>
+      <li id="report-tab" class="tab">Report</li>
     </ul>
   </div>
 
@@ -90,13 +91,16 @@
       </tbody>
     </table>  
   
-    <div id="footer">
-      <a href="/calculator/web_report" id="report">Generate Report</a>
-      <div id="powered-by-amee"></div>
-    </div>
   </div>
   
-  <div id="league" class="tab-content">
+  <div id="league" class="tab-content" style="display:none">
   </div>
     
+  <div id="report" class="tab-content" style="display:none">
+    reportfdfdsfdsfdsfdsfds
+  </div>
+
+  <div id="footer">
+    <div id="powered-by-amee"></div>
+  </div>
 </div>

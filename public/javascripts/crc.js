@@ -29,6 +29,10 @@ var crc = function () {
       $("#league-tab").click(function () {
         $("#league").load("/calculator/league_table");
       });
+
+      $("#report-tab").click(function () {
+        $("#report").load("/calculator/web_report");
+      });
     },
            
     createHhmrTrigger : function () {

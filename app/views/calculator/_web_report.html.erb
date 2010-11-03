@@ -1,5 +1,5 @@
-<%= stylesheet_link_tag "wr.css" %>
-<script src="/javascripts/wr.js" type="text/javascript"></script>  
+<script src="/javascripts/wr.js" type="text/javascript"></script>
+
 <script type="text/javascript">
   crcWr.data.timeFormats = {
     <%= js_time_hash @ref_date %>
@@ -9,9 +9,7 @@
 <% form_tag('/calculator/pdf_report', :id => "report-form") do -%>
 
 <div>
-    
-  <h2>Carbon Reduction Commitment Report</h2>
-    
+
   <table>
     <tbody>
       <tr>
@@ -40,22 +38,22 @@
       </tr>
     </tbody>
   </table>
-  
+
   <div class="divider"></div>
-  
+
   <h3>Totals</h3>
-    
+
   <table>
     <tbody>
       <tr><td>Total tCO2</td><td class="number"><%= fmt_no @entry.co2 %></td></tr>
       <tr><td>Total liability (£)</td><td class="number"><%= fmt_no @entry.cost %></td></tr>
     </tbody>
   </table>
-    
+
   <div class="divider"></div>
-  
+
   <h3>Breakdown</h3>
-  
+
   <table>
     <thead>
       <tr>
@@ -66,9 +64,9 @@
         <th>£ / yr</th>
       </tr>
     </thead>
-    
+
     <tbody>
-      
+
       <% @fuel_entries.each do |entry| %>
         <tr>
           <td><%= entry.hr_name %></td>
@@ -78,18 +76,14 @@
           <td class="number"><%= fmt_no entry.cost %></td>
         </tr>
       <% end %>
-      
+
     </tbody>
   </table>
-  
+
   <div class="divider"></div>
 
-  <div id="footer">
-    <div id="powered-by-amee-report"></div>
-    <div id="report">
-      <%= submit_tag "Generate PDF of this report" %>
-      <p><%= link_to "&laquo; Back", "/" %>
-    </div>    
+  <div id="pdfreport">
+    <%= submit_tag "Generate PDF of this report" %>
   </div>
 
 </div>
