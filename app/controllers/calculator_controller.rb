@@ -14,7 +14,7 @@ class CalculatorController < ApplicationController
     @client_detail = ClientDetail.find_by_profile_id profile
     @crc_status = @cd[:crc_status]
     @hhmr = @cd[:hhm_reading]
-    @section = params[:section].to_sym
+    @section = (params[:section] || 'about').to_sym
     render
   end
   
