@@ -158,6 +158,7 @@ class CalculatorController < ApplicationController
       "Wh" => "energyUsed",
       "L" => "volumeUsed",
       "kg" => "massUsed",
+      "t" => "massUsed",
     }
     form = h.find { |k,v| unit =~ /#{k}$/ }[1]
     {form => value, "#{form}Unit" => unit}
@@ -183,7 +184,7 @@ class CalculatorController < ApplicationController
       {:name => "natural gas",            :unit => "kWh"},
       {:name => "petrol",                 :unit => "L"  },
       {:name => "diesel",                 :unit => "L"  },
-      {:name => "fuel oil",               :unit => "kg" },
+      {:name => "fuel oil",               :unit => "t" },
                                                         
       {:name => "blast furnace gas",      :unit => "kWh"},
       {:name => "coke oven gas",          :unit => "kWh"},
@@ -193,17 +194,17 @@ class CalculatorController < ApplicationController
       {:name => "sour gas",               :unit => "kWh"},
       {:name => "network gas",            :unit => "kWh"},
                                                         
-      {:name => "aviation spirit",        :unit => "kg" },
-      {:name => "aviation turbine fuel",  :unit => "kg" },
-      {:name => "coking coal",            :unit => "kg" },
-      {:name => "industrial coal",        :unit => "kg" },
-      {:name => "lubricants",             :unit => "kg" },
-      {:name => "waste",                  :unit => "kg" },
-      {:name => "naphtha",                :unit => "kg" },
-      {:name => "petroleum coke",         :unit => "kg" },
-      {:name => "scrap tyres",            :unit => "kg" },
-      {:name => "solid smokeless fuel",   :unit => "kg" },
-      {:name => "waste solvents",         :unit => "kg" },
+      {:name => "aviation spirit",        :unit => "t" },
+      {:name => "aviation turbine fuel",  :unit => "t" },
+      {:name => "coking coal",            :unit => "t" },
+      {:name => "industrial coal",        :unit => "t" },
+      {:name => "lubricants",             :unit => "t" },
+      {:name => "waste",                  :unit => "t" },
+      {:name => "naphtha",                :unit => "t" },
+      {:name => "petroleum coke",         :unit => "t" },
+      {:name => "scrap tyres",            :unit => "t" },
+      {:name => "solid smokeless fuel",   :unit => "t" },
+      {:name => "waste solvents",         :unit => "t" },
                                                         
       {:name => "gas oil",                :unit => "L"  },
       {:name => "lpg",                    :unit => "L"  },
