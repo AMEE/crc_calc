@@ -6,6 +6,8 @@ var crcWr = function () {
     
     launch : function () {
       crcWr.enableOrgNaming();
+      crcWr.enableNaming();
+      crcWr.enableEmail();
       crcWr.syncDateFormats();
     },
     
@@ -29,6 +31,47 @@ var crcWr = function () {
       });
     },
     
+    enableNaming : function () {
+      var defaultName = "Your Name";
+
+      $("#name").focus(function () {
+        var $this = $(this);
+        if ($this.val() == defaultName) {
+          $this.val("").removeClass("textfield-placeholder");
+        }
+      });
+
+      $("#name").blur(function () {
+        var $input = $(this);
+        var val = $.trim($input.val());
+
+        if (val == "" || val == defaultName) {
+          $input.val(defaultName).addClass("textfield-placeholder");
+        }
+      });
+    },
+
+
+    enableEmail : function () {
+      var defaultName = "Your Email";
+
+      $("#email").focus(function () {
+        var $this = $(this);
+        if ($this.val() == defaultName) {
+          $this.val("").removeClass("textfield-placeholder");
+        }
+      });
+
+      $("#email").blur(function () {
+        var $input = $(this);
+        var val = $.trim($input.val());
+
+        if (val == "" || val == defaultName) {
+          $input.val(defaultName).addClass("textfield-placeholder");
+        }
+      });
+    },
+
     syncDateFormats : function () {
       $("#gen_date").change(function () {
         var refDate = crcWr.data.timeFormats[$(this).val()];

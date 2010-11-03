@@ -11,6 +11,7 @@ class CalculatorController < ApplicationController
     @fuel_entries = ordered_fuel_entries        
     
     @cd = ClientDetail.retrieve_all profile
+    @client_detail = ClientDetail.find_by_profile_id profile
     @crc_status = @cd[:crc_status]
     @hhmr = @cd[:hhm_reading]
     
@@ -111,6 +112,7 @@ class CalculatorController < ApplicationController
   def web_report    
     @ref_date = CRC::Config.standards_ref_date
     
+    @client_detail = ClientDetail.find_by_profile_id profile
     @fuel_entries = ordered_fuel_entries    
     lt = FuelEntry.league_table  
     @rank, @entry = FuelEntry.rank_and_entry lt, profile
@@ -120,12 +122,13 @@ class CalculatorController < ApplicationController
   end
   
   def pdf_report
+    @client_detail = ClientDetail.find_by_profile_id profile
     lt = FuelEntry.league_table  
     @rank, @entry = FuelEntry.rank_and_entry lt, profile
     @rank = "unranked" if @rank.nil?            
     @breakdown = ordered_fuel_entries
     
-    pdf = Pdf::Report.new.generate params[:org_name], params[:gen_date], params[:ref_date], @rank, @entry, @breakdown
+    pdf = Pdf::Report.new.generate @client_detail.org_name, params[:gen_date], params[:ref_date], @rank, @entry, @breakdown
     
     opts = {:filename => "crc.pdf", :type => "application/pdf", :disposition => "attachment"}
     send_data pdf.render, opts

@@ -1,9 +1,9 @@
-#report table {
+#report table, #details table {
   width: 500px;
 /*  font-family: "Courier New";*/
 }
 
-#report th {
+#report th, #details th {
   text-align: left;
   font-family: Helvetica, Arial, sans-serif;
   vertical-align: top;
@@ -14,7 +14,7 @@
   padding-top: .5em;
 }
 
-#report input, #report select {
+#report input, #report select, #details input {
   font-family: Helvetica, Arial, sans-serif;
   color: #333;
   border: 1px #ccc solid;
