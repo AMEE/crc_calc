@@ -8,6 +8,7 @@
   <div id="tabs">
     <ul>
       <li id="about-tab" class="tab selected">About</li>
+      <li id="details-tab" class="tab">Your Details</li>
       <li id="calculator-tab" class="tab">Calculator</li>
       <li id="league-tab" class="tab">Virtual CRC League Table</li>
       <li id="report-tab" class="tab">Report</li>
@@ -22,6 +23,10 @@
     <p>
       Under this scheme, organisations which use at least one half hourly electricity meter and consume at least 6,000 MWh of electricity per year are required to report on the CO<sub>2</sub> emissions associated with their total energy consumption. This includes electricity together with network gas and 24 other fuels, but excludes emissions associated with transport or onward supply.
     </p>
+  </div>
+
+  <div id="details" class="tab-content" style="display:none">
+    <%= render :partial => 'details' %>
   </div>
 
   <div id="calculator" class="tab-content" style="display:none">
