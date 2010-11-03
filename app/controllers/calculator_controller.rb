@@ -110,15 +110,19 @@ class CalculatorController < ApplicationController
   end
   
   def web_report    
-    @ref_date = CRC::Config.standards_ref_date
-    
     @client_detail = ClientDetail.find_by_profile_id profile
-    @fuel_entries = ordered_fuel_entries    
-    lt = FuelEntry.league_table  
-    @rank, @entry = FuelEntry.rank_and_entry lt, profile
-    @rank = "unranked" if @rank.nil?    
-    
-    render :partial => 'web_report'
+    if @client_detail.org_name.nil?
+      render :partial => "no_details"
+    else
+      @ref_date = CRC::Config.standards_ref_date
+
+      @fuel_entries = ordered_fuel_entries
+      lt = FuelEntry.league_table
+      @rank, @entry = FuelEntry.rank_and_entry lt, profile
+      @rank = "unranked" if @rank.nil?
+
+      render :partial => 'web_report'
+    end
   end
   
   def pdf_report
