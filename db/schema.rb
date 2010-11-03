@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091016092159) do
+ActiveRecord::Schema.define(:version => 20100913152642) do
 
   create_table "client_details", :force => true do |t|
     t.string   "guid"
@@ -17,6 +17,9 @@ ActiveRecord::Schema.define(:version => 20091016092159) do
     t.boolean  "hhm_reading",               :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "email"
+    t.string   "org_name"
   end
 
   create_table "fuel_entries", :force => true do |t|
