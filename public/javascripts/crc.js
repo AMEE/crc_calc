@@ -53,8 +53,8 @@ var crc = function () {
     },
    
     createCalcTriggers: function () {       
-      var calcTimer = null;       
-     
+      var calcTimers = new Array();
+
       var invokeCalc = function (e) {
         // Allow users to tab around without automatically calculating
         // Respectively ignore:
@@ -62,8 +62,9 @@ var crc = function () {
         var ignore = $.inArray(e.which, [0, 9, 16, 18, 91, 224]) >= 0;
         if (!ignore) {
           var input = this;
-          window.clearTimeout(calcTimer);
-          calcTimer = window.setTimeout(function () {
+          if (calcTimers[input.id])
+              window.clearTimeout(calcTimers[input.id]);
+          calcTimers[input.id] = window.setTimeout(function () {
             crc.calcCo2.apply(input);
           }, 500);
         }
@@ -74,7 +75,7 @@ var crc = function () {
       $("#crc-data input").keypress(invokeCalc);
     },
 
-    calcCo2: function () {      
+    calcCo2: function () {
       var sr = null;
       
       var success = function (res) {
@@ -101,7 +102,7 @@ var crc = function () {
       var $input = $(this);
       var val = $input.val();
       val = $.trim(val) == "" ? "0" : val
-            
+
       if (!val.match(/^[0-9]+$/)) {
         error();
       } else {
