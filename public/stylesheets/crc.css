@@ -29,7 +29,8 @@ body {
   margin-top: 20px;
 }
 
-#powered-by-amee {
+#powered-by-amee a{
+  float: right;
   width: 101px;
   height: 47px;
   background: white url('../images/powered_by_amee.png') left center no-repeat;
