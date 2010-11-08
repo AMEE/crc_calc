@@ -1,0 +1,16 @@
+AMEE Carbon Reduction Commitment Calculator Release History
+-----------------------------------------------------------
+
+Current Version:
+
+v1.1.0
+
+- Released on: 2010-11-08
+- Implemented a number of UI improvements to the calculator.
+- Resolved a bug that can occur when users update input values while previous
+    input values are still being handled via an Ajax API call.
+
+v1.0.0
+
+- Release on: 2010-07-23
+- Initial release of the CRC Calculator.
