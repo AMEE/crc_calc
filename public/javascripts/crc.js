@@ -84,11 +84,13 @@ var crc = function () {
         $("#total-co2").text(res.total_co2).removeClass("calc-error");
         $("#total-cost").text(res.total_cost).removeClass("calc-error");
         
+        $input.removeAttr("disabled");
         $input.removeClass("calculating").removeClass("calc-error");
         updateCrcStatus(res.crc_status);
       };
       
       var error = function (res) {
+        $input.removeAttr("disabled");
         $input.removeClass("calculating").addClass("calc-error");
         $(sr + "-co2").text("0");
         $(sr + "-cost").text("0");
@@ -106,6 +108,7 @@ var crc = function () {
       if (!val.match(/^[0-9]+$/)) {
         error();
       } else {
+        $input.attr("disabled", true);
         $input.addClass("calculating");
         sr = "#" + $input.attr("id");
 
