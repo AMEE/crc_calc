@@ -26,29 +26,16 @@ body {
 }
 
 #footer {
+  border-top: 1px solid black;
   margin-top: 20px;
+  padding-top: 10px;
 }
 
-#report {
-  color: black;
-  background: white;
-  border: none;
-  font-weight: bold;
-  padding: 15px 0 15px 15px;
+#powered-by-amee a{
   float: right;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#powered-by-amee, #powered-by-amee-report {
   width: 101px;
   height: 47px;
   background: white url('../images/powered_by_amee.png') left center no-repeat;
-}
-
-#powered-by-amee-report {
-  float: right;
-  margin-top: 15px;
 }
 
 .dimmed {
@@ -94,19 +81,19 @@ input {
   font-size: 100%;
 }
 
-table {
+#calculator table, #league table {
   color: #555;
   background: #fff;
   border-collapse: collapse;
   border: 2px #000 solid;
 }
 
-td, th {
+#calculator td, #calculator th, #league td, #league th {
   border: 1px #ccc dotted;
   padding: .5em;
 }
 
-thead th, tfoot th {
+#calculator thead th, #calculator tfoot th, #league thead th, #league tfoot th {
   color: #333;
   background: transparent;
   border: 2px #000 solid;
@@ -114,7 +101,7 @@ thead th, tfoot th {
   font-weight: bold;
 }
 
-tfoot td {
+#calculator tfoot td, #league tfoot td {
   border: 2px #000 solid;
 }
 

@@ -29,6 +29,10 @@ var crc = function () {
       $("#league-tab").click(function () {
         $("#league").load("/calculator/league_table");
       });
+
+      $("#report-tab").click(function () {
+        $("#report").load("/calculator/web_report");
+      });
     },
            
     createHhmrTrigger : function () {
@@ -49,8 +53,8 @@ var crc = function () {
     },
    
     createCalcTriggers: function () {       
-      var calcTimer = null;       
-     
+      var calcTimers = new Array();
+
       var invokeCalc = function (e) {
         // Allow users to tab around without automatically calculating
         // Respectively ignore:
@@ -58,8 +62,9 @@ var crc = function () {
         var ignore = $.inArray(e.which, [0, 9, 16, 18, 91, 224]) >= 0;
         if (!ignore) {
           var input = this;
-          window.clearTimeout(calcTimer);
-          calcTimer = window.setTimeout(function () {
+          if (calcTimers[input.id])
+              window.clearTimeout(calcTimers[input.id]);
+          calcTimers[input.id] = window.setTimeout(function () {
             crc.calcCo2.apply(input);
           }, 500);
         }
@@ -70,7 +75,7 @@ var crc = function () {
       $("#crc-data input").keypress(invokeCalc);
     },
 
-    calcCo2: function () {      
+    calcCo2: function () {
       var sr = null;
       
       var success = function (res) {
@@ -79,11 +84,13 @@ var crc = function () {
         $("#total-co2").text(res.total_co2).removeClass("calc-error");
         $("#total-cost").text(res.total_cost).removeClass("calc-error");
         
+        $input.removeAttr("disabled");
         $input.removeClass("calculating").removeClass("calc-error");
         updateCrcStatus(res.crc_status);
       };
       
       var error = function (res) {
+        $input.removeAttr("disabled");
         $input.removeClass("calculating").addClass("calc-error");
         $(sr + "-co2").text("0");
         $(sr + "-cost").text("0");
@@ -97,10 +104,11 @@ var crc = function () {
       var $input = $(this);
       var val = $input.val();
       val = $.trim(val) == "" ? "0" : val
-            
+
       if (!val.match(/^[0-9]+$/)) {
         error();
       } else {
+        $input.attr("disabled", true);
         $input.addClass("calculating");
         sr = "#" + $input.attr("id");
 

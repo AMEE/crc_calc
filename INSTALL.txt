@@ -1,0 +1,38 @@
+AMEE Carbon Reduction Commitment Calculator Install Instructions
+----------------------------------------------------------------
+
+1. Before installing the CRC Calculator, you will need to have Ruby on Rails
+   installed, and have an understanding of managing Ruby on Rails applications.
+
+   Please see http://guides.rubyonrails.org/ if you need help with setting up
+   Ruby on Rails.
+
+2. Download the CRC Calculator release file from
+    http://github.com/AMEE/crc_calc/downloads.
+
+3. Unzip the CRC Calculator release file.
+
+4. Change directory into the unpacked CRC Calculator code.
+
+5. Install the required RubyGems:
+
+        rake install:gems
+
+6. Copy the "config/amee.example.yml" file to "config/amee.yml", and configure
+   the file with your the AMEE API Project Key details that you intend to use
+   for the installation. If you do not have an AMEE API Project Key, or you
+   would like to create a new one for this installation, please visit the MyAMEE
+   site at http://my.amee.com.
+
+7. Copy the "config/database.example.yml" file to "config/database.yml", and
+   configure the file with details of the database you would like to use for
+   the installation.
+
+8. Set up the database:
+
+        rake db:setup
+
+9. Run the application! This can either be done with the "script/server"
+   command; or the Ruby on Rails application can be configured to run via your
+   web server. Please see the Ruby on Rails documentation for details on
+   running Ruby on Rails applications.

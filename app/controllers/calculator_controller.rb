@@ -11,9 +11,10 @@ class CalculatorController < ApplicationController
     @fuel_entries = ordered_fuel_entries        
     
     @cd = ClientDetail.retrieve_all profile
+    @client_detail = ClientDetail.find_by_profile_id profile
     @crc_status = @cd[:crc_status]
     @hhmr = @cd[:hhm_reading]
-    
+    @section = (params[:section] || 'about').to_sym
     render
   end
   
@@ -35,6 +36,15 @@ class CalculatorController < ApplicationController
     render :json => data
   end
   
+  def edit_details
+    @client_detail = ClientDetail.find_by_profile_id profile
+    @client_detail.name = params[:name] unless params[:name] == 'Your Name'
+    @client_detail.email = params[:email] unless params[:email] == 'Your Email'
+    @client_detail.org_name = params[:org_name] unless params[:org_name] == 'Your Org Name'
+    @client_detail.save!
+    redirect_to :action => 'index', :section => 'calculator'
+  end
+
   def hhmr 
     hhmr = params[:hhmr]
     
@@ -109,23 +119,29 @@ class CalculatorController < ApplicationController
   end
   
   def web_report    
-    @ref_date = CRC::Config.standards_ref_date
-    
-    @fuel_entries = ordered_fuel_entries    
-    lt = FuelEntry.league_table  
-    @rank, @entry = FuelEntry.rank_and_entry lt, profile
-    @rank = "unranked" if @rank.nil?    
-    
-    render
+    @client_detail = ClientDetail.find_by_profile_id profile
+    if @client_detail.org_name.nil?
+      render :partial => "no_details"
+    else
+      @ref_date = CRC::Config.standards_ref_date
+
+      @fuel_entries = ordered_fuel_entries
+      lt = FuelEntry.league_table
+      @rank, @entry = FuelEntry.rank_and_entry lt, profile
+      @rank = "unranked" if @rank.nil?
+
+      render :partial => 'web_report'
+    end
   end
   
   def pdf_report
+    @client_detail = ClientDetail.find_by_profile_id profile
     lt = FuelEntry.league_table  
     @rank, @entry = FuelEntry.rank_and_entry lt, profile
     @rank = "unranked" if @rank.nil?            
     @breakdown = ordered_fuel_entries
     
-    pdf = Pdf::Report.new.generate params[:org_name], params[:gen_date], params[:ref_date], @rank, @entry, @breakdown
+    pdf = Pdf::Report.new.generate @client_detail.org_name, params[:gen_date], params[:ref_date], @rank, @entry, @breakdown
     
     opts = {:filename => "crc.pdf", :type => "application/pdf", :disposition => "attachment"}
     send_data pdf.render, opts
@@ -142,6 +158,7 @@ class CalculatorController < ApplicationController
       "Wh" => "energyUsed",
       "L" => "volumeUsed",
       "kg" => "massUsed",
+      "t" => "massUsed",
     }
     form = h.find { |k,v| unit =~ /#{k}$/ }[1]
     {form => value, "#{form}Unit" => unit}
@@ -167,27 +184,24 @@ class CalculatorController < ApplicationController
       {:name => "natural gas",            :unit => "kWh"},
       {:name => "petrol",                 :unit => "L"  },
       {:name => "diesel",                 :unit => "L"  },
-      {:name => "fuel oil",               :unit => "kg" },
+      {:name => "fuel oil",               :unit => "t" },
                                                         
       {:name => "blast furnace gas",      :unit => "kWh"},
       {:name => "coke oven gas",          :unit => "kWh"},
       {:name => "colliery methane",       :unit => "kWh"},
       {:name => "other petroleum gas",    :unit => "kWh"},
-      {:name => "refinery miscellaneous", :unit => "kWh"},
       {:name => "sour gas",               :unit => "kWh"},
-      {:name => "network gas",            :unit => "kWh"},
                                                         
-      {:name => "aviation spirit",        :unit => "kg" },
-      {:name => "aviation turbine fuel",  :unit => "kg" },
-      {:name => "coking coal",            :unit => "kg" },
-      {:name => "industrial coal",        :unit => "kg" },
-      {:name => "lubricants",             :unit => "kg" },
-      {:name => "waste",                  :unit => "kg" },
-      {:name => "naphtha",                :unit => "kg" },
-      {:name => "petroleum coke",         :unit => "kg" },
-      {:name => "scrap tyres",            :unit => "kg" },
-      {:name => "solid smokeless fuel",   :unit => "kg" },
-      {:name => "waste solvents",         :unit => "kg" },
+      {:name => "aviation spirit",        :unit => "t" },
+      {:name => "aviation turbine fuel",  :unit => "t" },
+      {:name => "coking coal",            :unit => "t" },
+      {:name => "industrial coal",        :unit => "t" },
+      {:name => "waste",                  :unit => "t" },
+      {:name => "naphtha",                :unit => "t" },
+      {:name => "petroleum coke",         :unit => "t" },
+      {:name => "scrap tyres",            :unit => "t" },
+      {:name => "solid smokeless fuel",   :unit => "t" },
+      {:name => "waste solvents",         :unit => "t" },
                                                         
       {:name => "gas oil",                :unit => "L"  },
       {:name => "lpg",                    :unit => "L"  },

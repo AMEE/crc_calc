@@ -1,0 +1,30 @@
+<% form_tag :action => 'edit_details' do %>
+<table>
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td class="align-right">
+        <%= text_field_tag "name", @client_detail.name || "Your Name", :class => "textfield-placeholder" %>
+      </td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td class="align-right">
+        <%= text_field_tag "email", @client_detail.email || "Your Email", :class => "textfield-placeholder" %>
+      </td>
+    </tr>
+    <tr>
+      <td>Organisation</td>
+      <td class="align-right">
+        <%= text_field_tag "org_name", @client_detail.org_name || "Your Org Name", :class => "textfield-placeholder" %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="align-right">
+        <%= submit_tag %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
